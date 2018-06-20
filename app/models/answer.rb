@@ -1,3 +1,3 @@
-class Answer < ApplicationRecord::Base
+class Answer < ApplicationRecord
   belongs_to :question
 end

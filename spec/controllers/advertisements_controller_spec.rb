@@ -45,10 +45,11 @@ RSpec.describe AdvertisementsController, type: :controller do
       get :new
       expect(assigns(:advertisement)).not_to be_nil
     end
+    end
     describe "POST create" do
       it "increases the number of advertisements by 1" do
-        expect{post :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: 99}}.to
-        change(Advertisement,:count).by(1)
+        expect{ post :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: 99}}.to
+        change(Advertisement, :count).by(1)
       end
       it "assigns the new advertisement to @advertisement" do
         post :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: 99}
@@ -59,5 +60,4 @@ RSpec.describe AdvertisementsController, type: :controller do
         expect(repsonse).to redirect_to Advertisement.last
     end
   end
-end
 end

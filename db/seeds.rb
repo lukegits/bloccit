@@ -1,5 +1,15 @@
 require 'random_data'
 
+20.times do
+
+  Advertisement.create!(
+
+    title: RandomData.random_sentence,
+    copy: RandomData.random_paragraph,
+    price: 99
+  )
+end
+
  # Create Posts
  50.times do
  # #1
@@ -21,6 +31,10 @@ require 'random_data'
    )
  end
 
+ puts "#{Advertisement.count}"
+ Advertisement.find_or_create_by(title: "A unique title", copy: "Unique copy", price: 99)
+ puts "#{Advertisement.count}"
+
  puts "#{Post.count}"
  Post.find_or_create_by(title: "A unique title", body: "A unique body")
  puts "#{Post.count}"
@@ -29,6 +43,8 @@ require 'random_data'
  Comment.find_or_create_by(post: posts.sample, body: "A unique body")
  puts "#{Comment.count}"
 
+
  puts "Seed finished"
+ puts "#{Advertisement.count} advertisement created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"

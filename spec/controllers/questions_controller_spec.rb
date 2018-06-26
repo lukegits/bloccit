@@ -92,7 +92,7 @@ RSpec.describe QuestionsController, type: :controller do
      new_title = RandomData.random_sentence
      new_body = RandomData.random_paragraph
 
-     put :update, id: my_question.id, question: { title: new_title, body: new_body, resolved: true }
+     put :update, id: my_question.id, question: { title: new_title, body: new_body, resolved: false }
      expect(response).to redirect_to my_question
    end
   end

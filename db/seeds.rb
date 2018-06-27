@@ -31,6 +31,15 @@ end
    )
  end
 
+ 100.times do
+   Question.create!(
+ # #4
+     title: RandomData.random_sentence,
+     body: RandomData.random_paragraph,
+     resolved: false
+   )
+ end
+
  puts "#{Advertisement.count}"
  Advertisement.find_or_create_by(title: "A unique title", copy: "Unique copy", price: 99)
  puts "#{Advertisement.count}"
@@ -43,8 +52,12 @@ end
  Comment.find_or_create_by(post: posts.sample, body: "A unique body")
  puts "#{Comment.count}"
 
+puts "#{Question.count}"
+Question.ind_or_create_by(title: "A unique title", body: "A unique body")
+puts "#{Question.count}"
 
  puts "Seed finished"
  puts "#{Advertisement.count} advertisement created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
+ puts "#{Question.count} questions created"

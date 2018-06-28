@@ -1,5 +1,14 @@
 require 'random_data'
 
+# Create Topics
+15.times do
+  Topic.create!(
+    name:         RandomData.random_sentence,
+    description:  RandomData.random_paragraph
+  )
+end
+topics = Topic.all
+
 20.times do
 
   Advertisement.create!(
@@ -15,6 +24,7 @@ end
  # #1
    Post.create!(
  # #2
+     topic:  topics.sample,
      title:  RandomData.random_sentence,
      body:   RandomData.random_paragraph
    )
@@ -57,6 +67,7 @@ Question.ind_or_create_by(title: "A unique title", body: "A unique body")
 puts "#{Question.count}"
 
  puts "Seed finished"
+ puts "#{Topic.count} topics created"
  puts "#{Advertisement.count} advertisement created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"

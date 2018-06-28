@@ -1,6 +1,7 @@
 <h1><%= @topic.name %></h1>
 
  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
+ <%= link_to "Show Sponsored Post", edit_sponsored_path, class: 'btn btn-success' %>
  <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
 
  <div class="row">
@@ -18,12 +19,14 @@
              submitted <%= time_ago_in_words(post.created_at) %> ago <br>
              <%= post.comments.count %> Comments
            </small>
+           <%= link_to sponsored.title, sponsored_post_path(@sponsored, post) %>
          </div>
        </div>
      <% end %>
    </div>
    <div class="col-md-4">
       <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
+      <%= link_to "Show Sponsored Post", new_topic_post_path(@Sponsored), class: 'btn btn-success' %>
        <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
    </div>
  </div>

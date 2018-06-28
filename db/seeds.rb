@@ -50,6 +50,16 @@ end
    )
  end
 
+
+  10.times do
+    Sponsored.create!(
+  # #4
+      title: RandomData.random_sentence,
+      body: RandomData.random_paragraph,
+      price: 99
+    )
+  end
+
  puts "#{Advertisement.count}"
  Advertisement.find_or_create_by(title: "A unique title", copy: "Unique copy", price: 99)
  puts "#{Advertisement.count}"
@@ -66,9 +76,14 @@ puts "#{Question.count}"
 Question.ind_or_create_by(title: "A unique title", body: "A unique body")
 puts "#{Question.count}"
 
+puts "#{Sponsored.count}"
+Sponsored.find_or_create_by(title: "A unique title", body: "A unique body", price: 99)
+puts "#{Post.count}"
+
  puts "Seed finished"
  puts "#{Topic.count} topics created"
  puts "#{Advertisement.count} advertisement created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
  puts "#{Question.count} questions created"
+ puts "#{Sponsored.count} sponsored created"

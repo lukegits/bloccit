@@ -43,7 +43,7 @@ def destroy
 
    if @sponsoredPost.destroy
      flash[:notice] = "\"#{@sponsoredpost.name}\" was deleted successfully."
-     redirect_to action: :index-
+     redirect_to action: :index
    else
      flash.now[:alert] = "There was an error deleting the sponsoredpost."
      render :show

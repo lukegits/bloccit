@@ -19,9 +19,16 @@
              submitted <%= time_ago_in_words(post.created_at) %> ago <br>
              <%= post.comments.count %> Comments
            </small>
-           <%= link_to sponsored_posts.title, sponsored_posts_path (@sponsored_posts, post) %>
+      
          </div>
        </div>
+       <% @sponsored_posts.posts.each do |post| %>
+         <div class="media">
+           <div class="media-body">
+             <h4 class="media-heading">
+               <%= link_to sponsored_posts.title, sponsored_posts_path (@sponsored_posts, post) %>
+          </div>
+        </div>
      <% end %>
    </div>
    <div class="col-md-4">

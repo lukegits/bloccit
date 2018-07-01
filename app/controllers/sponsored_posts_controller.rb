@@ -1,23 +1,28 @@
 class SponsoredPostsController < ApplicationController
   def show
+    @topic = Topic.find(params[:topic_id])
     @sponsoredpost = SponsoredPost.find(params[:id])
   end
 
   def new
+    @topic = Topic.find(params[:topic_id])
     @sponsoredpost = SponsoredPost.new
   end
 
   def edit
+    @topic = Topic.find(params[:topic_id])
     @sponsoredpost = SponsoredPost.find(params[:id])
 end
 def create
+  @topic = Topic.find(params[:topic_id])
   @sponsoredpost = SponsoredPost.new
-  @sponsoredpost.title = params[:sponsored][:title]
-  @sponsoredpost.body = params[:sponsored][:body]
-  @sponsoredpost.price = params[:sponsored][:price]
+  @sponsoredpost.title = params[:sponsored_post][:title]
+  @sponsoredpost.body = params[:sponsored_post][:body]
+  @sponsoredpost.price = params[:sponsored_post][:price]
+    @sponsoredpost.topic = @topic
 
   if @sponsoredpost.save
-    redirect_to @sponsoredpost, notice: "Sponsored was saved successfully."
+    redirect_to [@topic, @sponsoredpost], notice: "Sponsored was saved successfully."
   else
     flash.now[:alert] = "Error creating sponsoredpost. Please try again."
     render :new

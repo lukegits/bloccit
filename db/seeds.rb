@@ -52,9 +52,9 @@ end
 
 
   10.times do
-    Sponsored.create!(
+    SponsoredPost.create!(
   # #4
-      title: RandomData.random_sentence,
+      title: topics.sample,
       body: RandomData.random_paragraph,
       price: 99
     )
@@ -73,12 +73,12 @@ end
  puts "#{Comment.count}"
 
 puts "#{Question.count}"
-Question.ind_or_create_by(title: "A unique title", body: "A unique body")
+Question.find_or_create_by(title: "A unique title", body: "A unique body")
 puts "#{Question.count}"
 
-puts "#{Sponsored.count}"
-Sponsored.find_or_create_by(title: "A unique title", body: "A unique body", price: 99)
-puts "#{Post.count}"
+puts "#{SponsoredPost.count}"
+SponsoredPost.find_or_create_by(title: "A unique title", body: "A unique body", price: 99)
+puts "#{SponsoredPost.count}"
 
  puts "Seed finished"
  puts "#{Topic.count} topics created"
@@ -86,4 +86,4 @@ puts "#{Post.count}"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
  puts "#{Question.count} questions created"
- puts "#{Sponsored.count} sponsored created"
+ puts "#{SponsoredPost.count} sponsored created"

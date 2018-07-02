@@ -55,3 +55,6 @@ group :development, :test do
 end
 gem 'bootstrap-sass'
 gem 'pry-rails', :group => :development
+
+# Used for encrypting passwords
+ gem 'bcrypt'

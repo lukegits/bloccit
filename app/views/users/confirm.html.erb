@@ -2,8 +2,9 @@
 <div class="row">
   <div class="col-md-4">
     <h4>Are you sure these values are correct?</h4>
-    <h5>Email: <% @user.email %></h5>
-    <h5>Name: <% @user.name %></h5>
+
+    <h5>Email: <%= @user.email %></h5>
+    <h5>Name: <%= @user.name %></h5>
   </div>
 </div>
 
@@ -14,6 +15,6 @@
   </div>
 
   <div class="col-md-4", style="width: auto;">
-    <%= button_to "No", { controller: "users", action: "new" }, class: 'btn btn-failure', :method => :get %>
+    <%= button_to "No", { controller: "users", action: "new" }, class: 'btn btn-danger', :method => :get %>
   </div>
 </div>

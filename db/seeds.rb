@@ -92,9 +92,18 @@ puts "#{SponsoredPost.count}"
 SponsoredPost.find_or_create_by(title: "A unique title", body: "A unique body", price: 99)
 puts "#{SponsoredPost.count}"
 
-user = User.first
- user.update_attributes!(
-   email: 'luket.chavez@gmail.com', # replace this with your personal email
+# Create an admin user
+ admin = User.create!(
+   name:     'Admin User',
+   email:    'admin@example.com',
+   password: 'helloworld',
+   role:     'admin'
+ )
+
+ # Create a member
+ member = User.create!(
+   name:     'Member User',
+   email:    'member@example.com',
    password: 'helloworld'
  )
 

@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
      it "responds to member?" do
        expect(user).to respond_to(:member?)
      end
-   end
+
 
    describe "roles" do
  # #4
@@ -93,3 +93,4 @@ RSpec.describe User, type: :model do
        end
      end
    end
+ end

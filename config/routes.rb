@@ -3,6 +3,11 @@ Rails.application.routes.draw do
     resources :posts, except: [:index]
     resources :sponsored_posts, except: [:index]
   end
+  
+   resources :posts, only: [] do
+ # #5
+     resources :comments, only: [:create, :destroy]
+   end
   # #7
   resources :users, only: [:new, :create]
 

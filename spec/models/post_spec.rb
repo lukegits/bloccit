@@ -10,9 +10,9 @@ RSpec.describe Post, type: :model do
   let(:topic) { Topic.create!(name: name, description: description) }
   # #4
   # #1
-   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
- # #2
-   let(:post) { topic.posts.create!(title: title, body: body, user: user) }
+  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
+  # #2
+  let(:post) { topic.posts.create!(title: title, body: body, user: user) }
 
   it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:votes) }
@@ -32,11 +32,11 @@ RSpec.describe Post, type: :model do
   # #2
   describe "attributes" do
     it "has a title, body, and user attribute" do
-       expect(post).to have_attributes(title: title, body: body, user: user)
+      expect(post).to have_attributes(title: title, body: body, user: user)
     end
   end
   describe "voting" do
-# #5
+    # #5
     before do
       3.times { post.votes.create!(value: 1, user: user) }
       2.times { post.votes.create!(value: -1, user: user) }
@@ -44,28 +44,28 @@ RSpec.describe Post, type: :model do
       @down_votes = post.votes.where(value: -1).count
     end
 
-# #6
+    # #6
     describe "#up_votes" do
       it "counts the number of votes with value = 1" do
         expect( post.up_votes ).to eq(@up_votes)
       end
     end
 
-# #7
+    # #7
     describe "#down_votes" do
       it "counts the number of votes with value = -1" do
         expect( post.down_votes ).to eq(@down_votes)
       end
     end
 
-# #8
+    # #8
     describe "#points" do
       it "returns the sum of all down and up votes" do
         expect( post.points ).to eq(@up_votes - @down_votes)
       end
     end
     describe "#update_rank" do
-# #28
+      # #28
       it "calculates the correct rank" do
         post.update_rank
         expect(post.rank).to eq (post.points + (post.created_at - Time.new(1970,1,1)) / 1.day.seconds)
@@ -81,6 +81,22 @@ RSpec.describe Post, type: :model do
         old_rank = post.rank
         post.votes.create!(value: -1, user: user)
         expect(post.rank).to eq (old_rank - 1)
+      end
+
+      describe "#create_vote" do
+        it "sets the post up_votes to 1" do
+          expect(post.up_votes).to eq(1)
+        end
+
+        it "calls #create_vote when a post is created" do
+          post = topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_sentence, user: user)
+          expect(post).to recieve(:create_vote)
+          post.save
+        end
+
+        it "associates the vote with the owner of the post" do
+          expect(post.votes.first.user).to eq(post.user)
+        end
       end
     end
   end

@@ -82,6 +82,8 @@ RSpec.describe Post, type: :model do
         post.votes.create!(value: -1, user: user)
         expect(post.rank).to eq (old_rank - 1)
       end
+        end
+      end
 
       describe "#create_vote" do
         it "sets the post up_votes to 1" do
@@ -96,8 +98,7 @@ RSpec.describe Post, type: :model do
 
         it "associates the vote with the owner of the post" do
           expect(post.votes.first.user).to eq(post.user)
-        end
-      end
+
     end
   end
 end

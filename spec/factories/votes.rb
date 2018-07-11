@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :votes do
-    votes RandomData.random_integer
+    votes 1
   end
 end

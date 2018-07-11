@@ -4,3 +4,4 @@ module CommentedHelper
           "{user.name} has not submitted any comments yet."
    end
 end
+end

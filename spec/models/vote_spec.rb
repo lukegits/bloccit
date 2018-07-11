@@ -27,4 +27,28 @@ RSpec.describe Vote, type: :model do
      vote.save!
    end
  end
+ describe "votes for user" do
+# #1
+    let(:factory_votes) { create(:votes) }
+
+    before do
+      post :create, params: { votes: update_rank }
+    end
+
+# #2
+    it "returns http success" do
+      get :show, params: { id: factory_votes.id }
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the #show view" do
+      get :show, params: { id: factory_votes.id }
+      expect(response).to render_template :show
+    end
+
+    it "assigns factory_user to @user" do
+      get :show, params: { id: factory_votes.id }
+      expect(assigns(:votes)).to eq(factory_votes)
+    end
+  end
 end

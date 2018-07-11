@@ -49,4 +49,8 @@ class CommentsController < ApplicationController
          redirect_to [comment.post.topic, comment.post]
        end
      end
+     def show
+       @user = User.find(params[:id])
+       @posts = @user.comments.visible_to(current_user)
+     end
 end

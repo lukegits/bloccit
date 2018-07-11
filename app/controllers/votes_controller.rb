@@ -23,4 +23,8 @@ class VotesController < ApplicationController
       @vote = current_user.votes.create(value: new_value, post: @post)
     end
   end
+  def show
+    @user = User.find(params[:id])
+    @posts = @user.votes.visible_to(current_user)
+  end
 end

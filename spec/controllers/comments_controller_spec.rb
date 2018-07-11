@@ -113,5 +113,29 @@ end
         expect(response).to redirect_to [my_topic, my_post]
       end
     end
+    describe "comments for user" do
+   # #1
+       let(:factory_comments) { create(:comments) }
+
+       before do
+         post :create, params: { commments: new_comment }
+       end
+
+   # #2
+       it "returns http success" do
+         get :show, params: { id: factory_comments.id }
+         expect(response).to have_http_status(:success)
+       end
+
+       it "renders the #show view" do
+         get :show, params: { id: factory_comments.id }
+         expect(response).to render_template :show
+       end
+
+       it "assigns factory_user to @user" do
+         get :show, params: { id: factory_comments.id }
+         expect(assigns(:comments)).to eq(factory_commments)
+       end
+     end
   end
 end

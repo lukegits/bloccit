@@ -2,11 +2,11 @@
    <div class="col-md-8">
      <div class="media">
        <br />
- // #10
+
        <% avatar_url = @user.avatar_url(128) %>
        <% if avatar_url %>
          <div class="media-left">
- // #11
+
            <%= image_tag avatar_url, class: 'media-object' %>
          </div>
        <% end %>
@@ -15,15 +15,22 @@
          <small>
            <%= pluralize(@user.posts.count, 'post') %>,
            <%= pluralize(@user.comments.count, 'comment') %>
+
          </small>
        </div>
      </div>
    </div>
  </div>
 
- // #12
+
  <h2>Posts</h2>
  <%= render @user.posts %>
-
+ <%= render @user.posted_helper %>
  <h2>Comments</h2>
  <%= render @user.comments %>
+ <%= render @user.commented_helper %>
+ <h2>Favorites</h2>
+ <%= render @user.favorites %>
+ <%= render @user.votes.count %>
+ <%= render @user.comments.count %>
+ <% avatar_url = @user.avatar_url(30) %>

@@ -6,6 +6,7 @@ RSpec.describe CommentsController, type: :controller do
   let(:my_topic) { create(:topic) }
    let(:my_user) { create(:user) }
    let(:other_user) { create(:user) }
+   let(:new_comment) { create(:comment)}
    let(:my_post) { create(:post, topic: my_topic, user: my_user) }
   let(:my_comment) { Comment.create!(body: 'Comment Body', post: my_post, user: my_user) }
 
@@ -115,10 +116,10 @@ end
     end
     describe "comments for user" do
    # #1
-       let(:factory_comments) { create(:comments) }
+       let(:factory_comment) { create(:comment) }
 
        before do
-         post :create, params: { commments: new_comment }
+         post :create, params: { comments: new_comment }
        end
 
    # #2

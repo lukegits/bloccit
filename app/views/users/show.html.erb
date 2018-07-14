@@ -5,7 +5,7 @@
 
        <% avatar_url = @user.avatar_url(128) %>
        <% if avatar_url %>
-         <div class="media-left"> 
+         <div class="media-left">
 
            <%= image_tag avatar_url, class: 'media-object' %>
          </div>
@@ -25,10 +25,9 @@
 
  <h2>Posts</h2>
  <%= render @user.posts %>
- <%= render @user.posted_helper %>
+
  <h2>Comments</h2>
  <%= render @user.comments %>
- <%= render @user.commented_helper %>
  <h2>Favorites</h2>
  <%= render @user.favorites %>
  <%= render @user.votes.count %>

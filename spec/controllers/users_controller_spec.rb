@@ -83,10 +83,10 @@ RSpec.describe UsersController, type: :controller do
      get :show, params: { id: factory_user.id }
      expect(response).to render_template :show
    end
- # DOES NOT WORK WITH FACTORY BOT! THIS CHECKPOINT IS BROKEN
- #   it "assigns factory_user to @user" do
- #     get :show, params: { id: factory_user.id }
- #     expect(assigns(:user)).to eq(factory_user)
- #   end
+
+   it "assigns factory_user to @user" do
+     get :show, params: { id: factory_user.id }
+     expect(assigns(:user)).to eq(factory_user)
+   end
  end
  end

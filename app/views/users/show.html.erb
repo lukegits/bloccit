@@ -37,11 +37,4 @@
   <%= render @user.posts %>
   <%= @user.votes.count %>
   <%= @user.comments.count %>
- <% avatar_url = @user.avatar_url(30) %>
- <% if avatar_url %>
-   <div class="media-left">
-
-     <%= image_tag avatar_url, class: 'media-object' %>
-
-   </div>
-    <% end %>
+ 

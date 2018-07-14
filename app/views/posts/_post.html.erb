@@ -8,6 +8,14 @@
       submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %> <br>
       <%= post.comments.count %> Comments
     </small>
+    <% avatar_url = @user.avatar_url(30) %>
+    <% if avatar_url %>
+      <div class="media-left">
+
+        <%= image_tag avatar_url, class: 'media-object' %>
+
+      </div>
+       <% end %>
 
   </div>
 </div>
@@ -21,5 +29,15 @@
        submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %> <br>
        <%= post.comments.count %> Comments
      </small>
+     <div>
+       <% avatar_url = @user.avatar_url(30) %>
+       <% if avatar_url %>
+         <div class="media-left">
+
+           <%= image_tag avatar_url, class: 'media-object' %>
+
+         </div>
+          <% end %>
+     </div>
    </div>
  </div>

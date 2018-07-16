@@ -1,8 +1,14 @@
 module UsersHelper
   def commentcheck
-    render @user.comments
+    if @user.comments > 0
+      return true
+    else
+      return false
   end
   def postscheck
-    render @user.posts
+    if @user.posts > 0
+      return true
+    else
+      return false
   end
 end
